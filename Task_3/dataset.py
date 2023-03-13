@@ -10,7 +10,6 @@ import numpy as np
 import pandas as pd
 from tqdm import tqdm
 from sklearn.neighbors import kneighbors_graph
-# from sklearn.feature_extraction.image import img_to_graph
 
 def split(data, batch):
     """
@@ -33,37 +32,51 @@ def split(data, batch):
     return data, slices
 
 def read_graph_data(path):
-
+    
     dataset = pq.read_table(path,columns=["X_jets","y"]).to_pandas()
     images_raw = dataset["X_jets"]
     labels = dataset["y"]
+    
+    num_node_attr = 6
+    num_edge_attr =1 
 
-    x = np.empty([0,3])
-    edge_index = np.empty([2,0])
-    edge_attr = np.empty([0,1],dtype=np.float32)
+    x = np.empty([0,num_node_attr],dtype=np.float32)
+    edge_index = np.empty([2,0],dtype=np.int32)
+    edge_attr = np.empty([0,num_edge_attr],dtype=np.float32)
     node_graph_id=np.array([],dtype=np.int32)
-    edge_slice = np.array([0])
+    edge_slice = np.array([0],dtype=np.int32)
     y = np.empty([0,1],dtype=np.float32)
 
-    for img_inx,img in enumerate(images_raw):
+    for img_inx,img in enumerate(tqdm(images_raw)):
         # convert the images into np arrays of shape (3,125,125)
+        num_dim = img.shape[0]
         img_np = np.stack([np.stack(channel) for channel in img])
         # get 2D mask of values 
         # where values are pixel values across the depth/ channel dim
         mask = np.sum(img_np, axis=0)
         # get x,y coordinates of this mask of non zero values 
         mask_coord = np.nonzero(mask)
-        # get vertices for the graph 
+        # global position embeddings 
+        # here global positions are in 3D dim
+        global_locs = np.vstack((mask_coord[0],mask_coord[1],np.zeros(mask_coord[0].shape,dtype=np.int32))).T
+        # get vertices for the graph  
         # vertices shape is (3, # num of nodes)
-        vertices=img_np[:,mask_coord[0],mask_coord[1]].T 
+        vertices=img_np[:,mask_coord[0],mask_coord[1]].T.astype(np.float32) 
+        # node features with global position embeddings
+        print(vertices.dtype)
+        vertices = np.hstack((vertices,global_locs)).astype(np.float32) 
+        print(vertices.dtype)
+        print(global_locs.dtype)
+        
         # self loops are excluded
         # adj : adjacency matrix of the image
         adj = kneighbors_graph(vertices, 2, mode='connectivity', include_self=False)
         vertices_dist = kneighbors_graph(vertices, 2, mode='distance', include_self=False)
-        img_edge_index  = from_scipy_sparse_matrix(adj)[0].numpy()
+        img_edge_index  = from_scipy_sparse_matrix(adj)[0].numpy().astype(np.int32)
         img_edge_index_ls= img_edge_index.tolist()
-        img_edge_attr = torch.tensor(vertices_dist[img_edge_index_ls[0],
-                                                   img_edge_index_ls[1]]).reshape(-1)
+        
+        img_edge_attr = vertices_dist[img_edge_index_ls[0],
+                                                   img_edge_index_ls[1]].reshape(-1,1).astype(np.int32)
         
         x = np.vstack((x,vertices))
         num_nodes = vertices.shape[0] # number of nodes 
@@ -137,8 +150,8 @@ class JetsGraphsDataset(InMemoryDataset):
         return 'geometric_jets_processed.pt'
 
     def process(self):
-
-        self.data,self.slices = read_graph_data(self.raw_dir)
+        raw_file = [file for file in self.raw_file_names if self.name in file][0]
+        self.data,self.slices = read_graph_data(osp.join(self.raw_dir,raw_file))
         if self.pre_filter is not None:
             data_list = [self.get(idx) for idx in range(len(self))]
             data_list = [data for data in data_list if self.pre_filter(data)]
