@@ -21,14 +21,15 @@
 
 ### **2. Model Architecture**
 
-![alt text](https://github.com/SarithRavI/ML4SCI-GSoC-Tests/blob/test/Task_3/Resources/ml4sci-gsoc-gnn-archi.jpg?raw=true)
+![alt text](https://github.com/SarithRavI/ML4SCI-GSoC-Tests/blob/test/Task_3/Resources/ml4sci-gsoc-gnn-architecture.jpg?raw=true)
 
 #### **2.1. Notes on implemented models**
 - `N=0` (i.e no pre-processing layers), `L=2` & `M=2`
-- Two models are implemented with two types of GNN layers: (1) [GCN Layer](https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.nn.conv.GCNConv.html#torch_geometric.nn.conv.GCNConv) (2) [PointNet Conv](https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.nn.conv.PointNetConv.html#torch_geometric.nn.conv.PointNetConv). 
+- Two models are implemented with two types of GNN layers: (1) [GCN Layer](https://arxiv.org/pdf/1609.02907.pdf) (2) [PointNet Conv](https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.nn.conv.PointNetConv.html#torch_geometric.nn.conv.PointNetConv). 
 - Latent embedding dimension is 300 for all the GNN layers. Embedding dimension of post-processing MLPs is 300 except for last MLP where embedding dimension = `number of classes = 2`.
 - Dropout ratio is set to 0.3 in both models.
 - Skip-connections are implemented for each GNN layer.
 - Both `sum` & `last` Jumping Knowledge connections are implemented. `last` JK-connection is in use. Note `last` JK only pass the node representation embedding of the last layer to next module, while `sum` JK passes summation of node representation embedding of every layer.  Refer to section 5.3.3 of [this](https://www.cs.mcgill.ca/~wlh/grl_book/files/GRL_Book.pdf) for the specification of JK.
 - In both models, `optimizer : Adam`, `learning rate : 1e-3`, `batch size : 32`, `epcohs : 75`.
+- In addition to aforementioned GNN layers, we trained models with [GAT layer](https://pytorch-geometric.readthedocs.io/en/latest/modules/nn.html) & [GIN layer](https://arxiv.org/pdf/1810.00826.pdf), and found that aforementioned layers outperform these.
 
