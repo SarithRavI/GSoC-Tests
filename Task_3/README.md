@@ -58,4 +58,4 @@
 - [ ] Trying different approaches to convert images to graphs. specially in a way such that the graph is small.
 - [ ] Finding the best `k` value for creating k-nearest-neighbor graph.
 - [ ] Finding where the model best fits in the GNN design space (see this [paper](https://arxiv.org/pdf/2011.08843.pdf))
-- [ ] Trying graph coarsening approaches in place of graph pooling (see page 65 of [here])(https://www.cs.mcgill.ca/~wlh/grl_book/files/GRL_Book.pdf)
+- [ ] Trying graph coarsening approaches in place of graph pooling (see page 65 of [here](https://www.cs.mcgill.ca/~wlh/grl_book/files/GRL_Book.pdf))
