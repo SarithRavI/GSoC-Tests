@@ -10,6 +10,8 @@
 
 ### **1. Method of graph construction from images.**
 
+**_NOTE: We created image dataset only with raw file identified by `QCDToGGQQ_IMGjet_RH1all_jet0_run0_n36272` and all 36272 images of this have been used in training._**
+
 - Dataset construction logic is in [dataset.py](https://github.com/SarithRavI/ML4SCI-GSoC-Tests/blob/test/Task_3/dataset.py) file
 - Single image is a `125x125x3 matrix`. This can be viewed as `125x125 pixels with 3 channel values`.
 - Filter pixels where the sum along 3 channels (i.e sum along the depth dimension) is greater than 0.0
