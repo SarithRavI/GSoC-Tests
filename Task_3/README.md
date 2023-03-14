@@ -21,7 +21,7 @@
 
 ### **2. Model Architecture**
 
-![alt text](https://github.com/SarithRavI/ML4SCI-GSoC-Tests/blob/test/Task_3/Resources/ml4sci-gsoc-gnn-architecture.jpg?raw=true)
+![alt text](https://github.com/SarithRavI/ML4SCI-GSoC-Tests/blob/test/Task_3/Resources/ml4sci-gsoc-gnn-architecture.png?raw=true)
 
 #### **2.1. Notes on implemented models**
 - `N=0` (i.e no pre-processing layers), `L=2` & `M=2`
