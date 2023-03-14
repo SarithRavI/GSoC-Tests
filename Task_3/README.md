@@ -33,3 +33,19 @@
 - In both models, `optimizer : Adam`, `learning rate : 1e-3`, `batch size : 32`, `epcohs : 75`.
 - In addition to aforementioned GNN layers, we trained models with [GAT layer](https://pytorch-geometric.readthedocs.io/en/latest/modules/nn.html) & [GIN layer](https://arxiv.org/pdf/1810.00826.pdf), and found that aforementioned layers outperform these.
 
+## 3. Performance
+
+- Training of the model was done by splitting the dataset into train: validation: test sets with 70%, 20%, 10% ratio respectively.
+- Performance metric is AUC (of ROC).
+- nb inx denotes notebook cell index to refer the model training. 
+
+| Layer | has GPE | Train  | Test  | nb inx |
+| ------ | :---: | :----: | :----: | :----: |
+| PointNet Conv | no| 0.793 | 0.773 | In [19]
+| PointNet Conv | yes | - | - | -
+| GCN | no | 0.791 | 0.777| In [28]
+| GCN | yes | 0.784 | 0.768 | Removed
+
+- Model that utilizes PointNet conv outperforms the model with GCN layers in training. But GCN model has higher generalization capability. This observation aligns with the fact that simple convolution can increase the linear seperability of a model and improves generalization (see this [paper](https://arxiv.org/pdf/2102.06966.pdf)).
+- GCN layer is sensitive to distribution of node features. When graphs falling into separate classes, have less amount of similar node features among each other, GCN is powerful as much as WL-test. This explains why GCN outperformed GIN model (see this [paper](https://arxiv.org/pdf/1810.00826.pdf))
+- Knowing that, since all the nodes have a similar element (GPE value along depth dim which is fixed to 0.0) in their node feature, we suspect this element reduces performance of the GCN when dataset with GPE is fed. 
