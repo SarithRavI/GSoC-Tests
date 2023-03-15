@@ -1,11 +1,11 @@
 ## GNN based jets classification.
 
 **_SPECIAL NOTE:_** 
-**_Due to a thermal issue in my personal machine my machine tends to turn off unexpectedly while training. After each epoch we save the model weights as a checkpoint So we can continue the training from that checkpoint if the machine turned off amid training. Please note that's why there are several notebook outputs for a single model training each starting from the epoch where it left off (you can see the logic in cell `In [12]`)._** 
+**_Due to a thermal issue in my personal machine my machine tends to turn off unexpectedly while training. After each epoch we save the model weights as a checkpoint So we can continue the training from that checkpoint if the machine turned off amid training. Please note that's why there are notebook outputs with epochs starting from where it left off (you can see the logic in cell `In [12]`)._** 
 
 **_So if you want to view the training outcome at the end of each model's training, please refer to following cells:_**
-- **_GNN with PointNet Conv: `In [19]`_**
-- **_GNN with GCN Layer: `In [28]`_**
+- **_GNN with PointNet Conv: `In [13]`_**
+- **_GNN with GCN Layer: `In [14]` & `In [15]`_**
 
 
 ### **1. Method of graph construction from images.**
@@ -44,10 +44,10 @@
 
 | Layer | has GPE | Train  | Test  | nb inx |
 | ------ | :---: | :----: | :----: | :----: |
-| PointNet Conv | no| 0.793 | 0.773 | In [19]
+| PointNet Conv | no| 0.793 | 0.773 | In [13]
 | PointNet Conv | yes | - | - | -
-| GCN | no | 0.791 | 0.777| In [28]
-| GCN | yes | 0.784 | 0.768 | Removed
+| GCN | yes | 0.784 | 0.768 | In [13]
+| GCN | no | 0.791 | 0.777| In [14]
 
 #### 3.1 Discussion
 
