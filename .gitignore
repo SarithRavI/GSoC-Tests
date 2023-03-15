@@ -1,4 +1,6 @@
 dataset/
+models/
+tensorboard-plots/
 .ipynb_checkpoints
 *-testing.ipynb
 *.pt
