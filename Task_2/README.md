@@ -17,5 +17,5 @@ For this task we trained a Convolutional Neural Network (CNN), Xception model se
 
 Xception model obtained AUC (of ROC) of :
 - `0.806` in `train set`
-- `0.769` in `test set`
+- `0.777` in `test set`
 - `0.8` in `entire dataset`
