@@ -5,7 +5,7 @@
 
 **_So if you want to view the training outcome at the end of each model's training, please refer to following cells:_**
 - **_GNN with PointNet Conv: `In [13]`_**
-- **_GNN with GCN Layer: `In [14]` & `In [15]`_**
+- **_GNN with GCN Layer: `In [14]` ,`In [15]` & `In [16]`_**
 
 
 ### **1. Method of graph construction from images.**
@@ -46,14 +46,15 @@
 | ------ | :---: | :----: | :----: | :----: |
 | PointNet Conv | no| 0.793 | 0.773 | In [13]
 | PointNet Conv | yes | - | - | -
-| GCN | yes | 0.784 | 0.768 | In [13]
-| GCN | no | 0.791 | 0.777| In [14]
+| GCN | yes (all xyz) | 0.792 | 0.776 | In [14]
+| GCN | yes (only xy) | 0.793 | 0.778 | In [15]
+| GCN | no | 0.792 | 0.777| In [16]
 
 #### 3.1 Discussion
 
 - Model that utilizes PointNet conv outperforms the model with GCN layers in training. But GCN model has higher generalization capability. This observation aligns with the fact that simple convolution can increase the linear seperability of a model and improves generalization (see this [paper](https://arxiv.org/pdf/2102.06966.pdf)).
 - GCN layer is sensitive to distribution of node features. When graphs falling into separate classes, have less amount of similar node features among each other, GCN is powerful as much as WL-test. This explains why GCN outperformed GIN model in our case.(see this [paper](https://arxiv.org/pdf/1810.00826.pdf))
-- Knowing that, since all the nodes have a similar element (GPE value along depth dim which is fixed to 0.0) in their node feature, we suspect this element reduces performance of the GCN when dataset with GPE is fed. This hypothesis is yet to be checked.
+- Knowing that, since all the nodes have a similar element (GPE value along depth dim which is fixed to 0.0) in their node feature, we suspect this element reduces performance of the GCN when dataset with GPE is fed. This is tested and view issue #2 for conclusion.
 
 ### 4. Future works.
 
