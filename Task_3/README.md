@@ -33,7 +33,9 @@
 - Skip-connections are implemented for each GNN layer.
 - Both `sum` & `last` Jumping Knowledge connections are implemented. `last` JK-connection is in use. Note `last` JK only pass the node representation embedding of the last layer to next module, while `sum` JK passes summation of node representation embedding of every layer.  Refer to section 5.3.3 of [this](https://www.cs.mcgill.ca/~wlh/grl_book/files/GRL_Book.pdf) for the specification of JK.
 - `sum`, `mean`, `max` & `attention` graph pooling is implemented. currently `mean` pooling is used.
-- In both models, `optimizer : Adam`, `learning rate : 1e-3`, `batch size : 32`, `epcohs : 75`.
+- In both models, `optimizer : Adam`, `learning rate : 1e-3`, `batch size : 32`.
+- The model with PointNet Conv is trained for `75` epochs, model with GCN layer trained without GPE also runs `75` epochs.
+- Rest of the models are trained for `80` epochs.
 - In addition to aforementioned GNN layers, we trained models with [GAT layer](https://pytorch-geometric.readthedocs.io/en/latest/modules/nn.html) & [GIN layer](https://arxiv.org/pdf/1810.00826.pdf), and found that aforementioned layers outperform these.
 
 ### 3. Performance
