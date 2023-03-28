@@ -16,4 +16,4 @@ Refer [Idea list](https://docs.google.com/document/d/1lWTSASnVICm_4Zof7wr6_LkS24
 
 Refer [here](https://drive.google.com/file/d/13gQToLhaoKGM7hXJY2sxVaVFqvS0Z9X9/view)
 
-- Common task 1 : [Electron/photon classification](https://github.com/SarithRavI/ML4SCI-GSoC-Tests/tree/master/Task_1)
+- Common task 1 : [Electron/photon classification](https://github.com/SarithRavI/GSoC-Tests/tree/master/Project_CMS/Task_1)
