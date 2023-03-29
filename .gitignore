@@ -4,3 +4,4 @@ tensorboard-plots/
 .ipynb_checkpoints
 *-testing.ipynb
 *.pt
+__pycache__/
