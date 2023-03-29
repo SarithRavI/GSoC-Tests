@@ -15,7 +15,7 @@ Hence there are two additional layers in keras model to `resize` and `standardiz
 
 - we split the dataset into train: validation: test with ratio of `70%: 20%: 10`.
 - In `pytorch model` we observered that the model overfits heavily after the `epoch 21`. Given that we stopped training at `epoch 23`.
-- In both models, `optimizer : Adam`, `learning rate : 1e-3`, `batch size : 32`.
+- In both models, `optimizer : Adam`, `learning rate : 1e-3`, `batch size : 64`.
 
 **_NOTE: We didn't run the keras model fully, since it is the same of pytorch model. For the purpose of demonstrating that keras model works, we run the 1st epoch._**
 

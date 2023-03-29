@@ -161,7 +161,12 @@ class JetsGraphsDataset(InMemoryDataset):
             data_list = [self.get(idx) for idx in range(len(self))]
             data_list = [self.pre_transform(data) for data in data_list]
             self.data, self.slices = self.collate(data_list)
-
+            
+        if self.transform is not None:
+            data_list = [self.get(idx) for idx in range(len(self))]
+            data_list = [self.transform(data) for data in data_list]
+            self.data, self.slices = self.collate(data_list)
+            
         print('Saving...')
         torch.save((self.data, self.slices), self.processed_paths[0])
         
