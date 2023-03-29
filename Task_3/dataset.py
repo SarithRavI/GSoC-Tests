@@ -63,10 +63,7 @@ def read_graph_data(path):
         # vertices shape is (3, # num of nodes)
         vertices=img_np[:,mask_coord[0],mask_coord[1]].T.astype(np.float32) 
         # node features with global position embeddings
-        print(vertices.dtype)
         vertices = np.hstack((vertices,global_locs)).astype(np.float32) 
-        print(vertices.dtype)
-        print(global_locs.dtype)
         
         # self loops are excluded
         # adj : adjacency matrix of the image
@@ -147,6 +144,9 @@ class JetsGraphsDataset(InMemoryDataset):
 
     @property
     def processed_file_names(self):
+        
+        if self.pre_transform is not None:
+            return f"geometric_jets_processed_{repr(self.pre_transform)[:-2]}.pt"
         return 'geometric_jets_processed.pt'
 
     def process(self):
