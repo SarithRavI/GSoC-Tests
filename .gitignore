@@ -5,3 +5,4 @@ tensorboard-plots/
 *-testing.ipynb
 *.pt
 __pycache__/
+requirement.txt
