@@ -10,8 +10,8 @@
 ### 1. Introduction
 For this task we trained a Convolutional Neural Network (CNN), Xception model sepcified [here](https://arxiv.org/pdf/1610.02357.pdf).
 
-Link for the [PyTorch implementation](https://github.com/SarithRavI/ML4SCI-GSoC-Tests/blob/test/Task_1/Task-1-pytorch-Xception.ipynb) 
-Link for the [tensorflow/keras implementation](https://github.com/SarithRavI/ML4SCI-GSoC-Tests/blob/test/Task_1/Task-1-keras-Xception.ipynb)
+Link for the [PyTorch implementation](https://github.com/SarithRavI/GSoC-Tests/blob/master/Project_CMS/Task_1/Task-1-pytorch-Xception.ipynb) 
+Link for the [tensorflow/keras implementation](https://github.com/SarithRavI/GSoC-Tests/blob/master/Project_CMS/Task_1/Task-1-keras-Xception.ipynb)
 
 It's worth noting the keras implementation is same as the pytorch implementation of Xception model, except for 2 alterations: 
 - In case of keras model we output only one scalar probability. In case of pytorch implementation we output two scalar probabilities (softmax). 
