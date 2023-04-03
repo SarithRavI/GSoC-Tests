@@ -1,17 +1,17 @@
 ## Common Task 1. Electron/photon classification
 
 **_SPECIAL NOTE:_** 
-**_Due to a thermal issue in my personal machine it tends to turn off unexpectedly while training. After each epoch we save the model weights as a checkpoint So we can continue the training from that last checkpoint if the machine turned off amid training. Please note that's why there are notebook outputs with epochs starting from where it left off (you can see the logic in cell `In [15] & [16]`)._** 
+**_Due to a thermal issue in my personal machine it tends to turn off unexpectedly while training. After each epoch we save the model weights as a checkpoint So we can continue the training from that last checkpoint if the machine turned off amid training. Please note that's why there are notebook outputs with epochs starting from where it left off (you can see the logic in cell `In [15] & [16]` in [here](https://github.com/SarithRavI/GSoC-Tests/blob/master/Task_1/Task-1-pytorch-Xception.ipynb))._** 
 
 **_If you want to view the training outcomes, please refer to following cells:_**
-- **_training Xception model: `In [16]`_**
-- **_evaluation of the model on entire dataset: `In [17]`_**
+- **_training Xception model: `In [16]`_ in [here](https://github.com/SarithRavI/GSoC-Tests/blob/master/Task_1/Task-1-pytorch-Xception.ipynb)**
+- **_evaluation of the model on entire dataset: `In [17]`_ in [here](https://github.com/SarithRavI/GSoC-Tests/blob/master/Task_1/Task-1-pytorch-Xception.ipynb)**
 
 ### 1. Introduction
 For this task we trained a Convolutional Neural Network (CNN), Xception model sepcified [here](https://arxiv.org/pdf/1610.02357.pdf).
 
-Link for the [PyTorch implementation](https://github.com/SarithRavI/ML4SCI-GSoC-Tests/blob/test/Task_1/Task-1-pytorch-Xception.ipynb) 
-Link for the [tensorflow/keras implementation](https://github.com/SarithRavI/ML4SCI-GSoC-Tests/blob/test/Task_1/Task-1-keras-Xception.ipynb)
+Link for the [PyTorch implementation](https://github.com/SarithRavI/ML4SCI-GSoC-Tests/blob/master/Task_1/Task-1-pytorch-Xception.ipynb) 
+Link for the [tensorflow/keras implementation](https://github.com/SarithRavI/ML4SCI-GSoC-Tests/blob/master/Task_1/Task-1-keras-Xception.ipynb)
 
 It's worth noting the keras implementation is same as the pytorch implementation of Xception model, except for 2 alterations: 
 - In case of keras model we output only one scalar probability. In case of pytorch implementation we output two scalar probabilities (softmax). 
