@@ -47,7 +47,6 @@
 | Layer | has GPE | Train  | Test  | nb inx |
 | ------ | :---: | :----: | :----: | :----: |
 | PointNet Conv | no| 0.793 | 0.773 | In [13]
-| PointNet Conv | yes | - | - | -
 | GCN | yes (all xyz) | 0.792 | 0.776 | In [14]
 | GCN | yes (only xy) | 0.793 | 0.778 | In [15]
 | GCN | no | 0.792 | 0.777| In [16]
@@ -59,8 +58,7 @@
 - Knowing that, since all the nodes have a similar element (GPE value along depth dim which is fixed to 0.0) in their node feature, we suspect this element reduces performance of the GCN when dataset with GPE is fed. This is tested and view issue #2 for conclusion.
 
 ### 4. Future works.
-
-- [ ] Trying different approaches to convert images to graphs. specially in a way such that the graph is small.
+- [x] Supporting structural positional encoding like Random-walk embedding.
 - [ ] Finding the best `k` value for creating k-nearest-neighbor graph.
 - [ ] Finding where the model best fits in the GNN design space (see this [paper](https://arxiv.org/pdf/2011.08843.pdf))
 - [ ] Trying graph coarsening approaches in place of graph pooling (see page 65 of [here](https://www.cs.mcgill.ca/~wlh/grl_book/files/GRL_Book.pdf))
