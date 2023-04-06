@@ -6,6 +6,8 @@
 **_If you want to view the training outcomes, please refer to following cells:_**
 - **_training Xception model: `In [17]`_**
 
+**_Click [here](https://tensorboard.dev/experiment/TjfMWJJNQkmSXQoc4n92wQ/) to view the Tensorboard._**
+
 ### 1. Introduction
 For this task we trained a Convolutional Neural Network (CNN), Xception model sepcified [here](https://arxiv.org/pdf/1610.02357.pdf).
 
